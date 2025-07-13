@@ -37,6 +37,33 @@ To compile innoextract, run:
     $ cmake ..
     $ make
 
+<details>
+<summary>Compile on Windows (Visual Studio 2022):</summary>
+
+  * vcpkg
+    - install packages with triplet := **x64-windows-static**
+      ```
+      liblzma
+      boost-date-time
+      boost-filesystem
+      boost-foreach
+      boost-format
+      boost-iostreams
+      boost-program-options
+      boost-ptr-container
+      boost-system
+      ```
+  * CMake
+    ```
+    cmake .. -DCMAKE_TOOLCHAIN_FILE="<vcpkg-root>\scripts\buildsystems\vcpkg.cmake" -DVCPKG_TARGET_TRIPLET="x64-windows-static" -DCMAKE_BUILD_TYPE=Release
+    ```
+  * Build with MSVC
+    ```
+    msbuild innoextract.vcxproj -p:Configuration=Release
+    ```
+
+</details>
+
 To install the binaries system-wide, run as root:
 
     # make install
